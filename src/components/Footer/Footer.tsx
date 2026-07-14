@@ -65,7 +65,7 @@ export default function Footer() {
       </div>
       
       <div className={styles.bottomBar}>
-        <p>&copy; {new Date().getFullYear()} DentalCare Clinic. All rights reserved.</p>
+        <p>&copy; 2026 DentalCare Clinic. All rights reserved.</p>
       </div>
     </footer>
   );
