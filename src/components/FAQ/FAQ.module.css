@@ -1,0 +1,125 @@
+.faq {
+  background-color: var(--color-light-bg);
+  padding: 6rem 5%;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6rem;
+}
+
+.leftColumn {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.eyebrow {
+  color: var(--color-accent);
+  font-size: 0.875rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-bottom: 1rem;
+}
+
+.heading {
+  color: var(--color-primary);
+  font-size: clamp(2rem, 3vw, 2.5rem);
+  font-weight: 700;
+  line-height: 1.2;
+  margin-bottom: 1.5rem;
+}
+
+.desc {
+  color: var(--color-text-muted);
+  font-size: 1.125rem;
+  margin-bottom: 2.5rem;
+}
+
+.button {
+  background-color: var(--color-accent);
+  color: var(--color-white);
+  padding: 0.75rem 2rem;
+  border-radius: 4px;
+  font-weight: 600;
+  transition: background-color 0.3s ease;
+}
+
+.button:hover {
+  background-color: #169db8;
+}
+
+.rightColumn {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.accordion {
+  display: flex;
+  flex-direction: column;
+}
+
+.accordionItem {
+  border-bottom: 1px solid var(--color-border);
+  padding: 1.5rem 0;
+}
+
+.accordionItem:first-child {
+  border-top: 1px solid var(--color-border);
+}
+
+.accordionHeader {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: none;
+  text-align: left;
+  padding: 0;
+  color: var(--color-primary);
+  transition: color 0.3s ease;
+}
+
+.accordionHeader:hover {
+  color: var(--color-accent);
+}
+
+.open .accordionHeader {
+  color: var(--color-accent);
+}
+
+.question {
+  font-size: 1.125rem;
+  font-weight: 600;
+  padding-right: 2rem;
+}
+
+.icon {
+  font-size: 1.5rem;
+  font-weight: 400;
+  color: var(--color-accent);
+  flex-shrink: 0;
+}
+
+.accordionBody {
+  overflow: hidden;
+  transition: max-height 0.4s ease-in-out;
+}
+
+.answer {
+  padding-top: 1rem;
+  color: var(--color-text-muted);
+  line-height: 1.6;
+}
+
+@media (max-width: 1024px) {
+  .container {
+    grid-template-columns: 1fr;
+    gap: 4rem;
+  }
+}
