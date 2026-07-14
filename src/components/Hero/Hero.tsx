@@ -24,16 +24,13 @@ export default function Hero() {
       </div>
       <div className={styles.heroRight}>
         <div className={styles.imageWrapper}>
-          <div style={{width: '100%', height: '100%', backgroundColor: '#e2e8f0'}}>
-            {/* Placeholder until image is generated */}
-          </div>
-          {/* <Image
+          <Image
             src="/images/hero-dentist.jpg"
             alt="Smiling female dentist in clinic"
             fill
             className={styles.image}
             priority
-          /> */}
+          />
         </div>
       </div>
     </section>
