@@ -1,0 +1,154 @@
+.hero {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  min-height: 90vh;
+  width: 100%;
+}
+
+.heroLeft {
+  background-color: var(--color-white);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 4rem 10% 4rem 15%;
+}
+
+.content {
+  animation: slideUp 0.8s ease-out forwards;
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.eyebrow {
+  color: var(--color-accent);
+  font-size: 0.875rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-bottom: 1rem;
+  display: block;
+}
+
+.heading {
+  color: var(--color-primary);
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  font-weight: 700;
+  line-height: 1.1;
+  margin-bottom: 1.5rem;
+}
+
+.subtitle {
+  color: var(--color-text-muted);
+  font-size: 1.125rem;
+  margin-bottom: 2.5rem;
+  max-width: 90%;
+}
+
+.buttonGroup {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.primaryButton,
+.secondaryButton {
+  padding: 0.875rem 2rem;
+  border-radius: 4px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  text-align: center;
+}
+
+.primaryButton {
+  background-color: var(--color-accent);
+  color: var(--color-white);
+}
+
+.primaryButton:hover {
+  background-color: #169db8;
+}
+
+.secondaryButton {
+  background-color: transparent;
+  color: var(--color-accent);
+  border: 1px solid var(--color-accent);
+}
+
+.secondaryButton:hover {
+  background-color: var(--color-accent);
+  color: var(--color-white);
+}
+
+.heroRight {
+  background-color: var(--color-light-bg);
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 2rem 0;
+}
+
+.imageWrapper {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  min-height: 500px;
+  /* Simulating the edge cut-off depth effect */
+  border-radius: 12px 0 0 12px;
+  overflow: hidden;
+  box-shadow: -10px 0 30px rgba(0,0,0,0.05);
+}
+
+.image {
+  object-fit: cover;
+  object-position: center;
+}
+
+@keyframes slideUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 1024px) {
+  .hero {
+    grid-template-columns: 1fr;
+    min-height: auto;
+  }
+
+  .heroLeft {
+    padding: 6rem 5% 4rem;
+    align-items: center;
+    text-align: center;
+  }
+
+  .subtitle {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .buttonGroup {
+    justify-content: center;
+  }
+
+  .heroRight {
+    padding: 0 5% 4rem;
+    background-color: var(--color-white);
+  }
+
+  .imageWrapper {
+    height: 500px;
+    border-radius: 12px;
+  }
+}
+
+@media (max-width: 768px) {
+  .heading {
+    font-size: 2.5rem;
+  }
+  
+  .imageWrapper {
+    height: 400px;
+  }
+}
