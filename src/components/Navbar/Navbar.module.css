@@ -1,0 +1,122 @@
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background-color: var(--color-white);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 5%;
+  height: 80px;
+}
+
+.logo a {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--color-primary);
+}
+
+.navLinks {
+  display: flex;
+  gap: 2rem;
+}
+
+.navLinks a {
+  font-weight: 500;
+  color: var(--color-text-dark);
+  transition: color 0.3s ease;
+  position: relative;
+}
+
+.navLinks a:hover {
+  color: var(--color-accent);
+}
+
+.navLinks a::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: -4px;
+  left: 0;
+  background-color: var(--color-accent);
+  transition: width 0.3s ease;
+}
+
+.navLinks a:hover::after {
+  width: 100%;
+}
+
+.ctaContainer {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.phone {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: 600;
+  color: var(--color-primary);
+}
+
+.phoneIcon {
+  color: var(--color-accent);
+}
+
+.ctaButton {
+  background-color: var(--color-accent);
+  color: var(--color-white);
+  padding: 0.75rem 1.5rem;
+  border-radius: 4px;
+  font-weight: 600;
+  transition: background-color 0.3s ease;
+}
+
+.ctaButton:hover {
+  background-color: #169db8;
+  color: var(--color-white);
+}
+
+.hamburger {
+  display: none;
+  background: none;
+  color: var(--color-text-dark);
+}
+
+@media (max-width: 1024px) {
+  .phone {
+    display: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .hamburger {
+    display: block;
+    order: 2;
+  }
+
+  .navLinks {
+    position: absolute;
+    top: 80px;
+    left: 0;
+    width: 100%;
+    background-color: var(--color-white);
+    flex-direction: column;
+    padding: 2rem 5%;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+    clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+    transition: clip-path 0.3s ease-in-out;
+    gap: 1.5rem;
+  }
+
+  .navLinks.open {
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+  }
+
+  .ctaContainer {
+    display: none;
+  }
+}
