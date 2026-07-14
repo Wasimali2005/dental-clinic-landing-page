@@ -1,0 +1,48 @@
+.statsBar {
+  background-color: var(--color-primary);
+  display: flex;
+  justify-content: space-around;
+  padding: 4rem 5%;
+  flex-wrap: wrap;
+  gap: 2rem;
+}
+
+.statItem {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  flex: 1;
+  min-width: 200px;
+  position: relative;
+}
+
+.statItem:not(:last-child)::after {
+  content: '';
+  position: absolute;
+  right: 0;
+  top: 10%;
+  height: 80%;
+  width: 1px;
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+.number {
+  color: var(--color-white);
+  font-size: 3rem;
+  font-weight: 700;
+  line-height: 1.2;
+  margin-bottom: 0.5rem;
+}
+
+.label {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+@media (max-width: 1024px) {
+  .statItem:not(:last-child)::after {
+    display: none;
+  }
+}
