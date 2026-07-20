@@ -1,14 +1,39 @@
 'use client';
 import { useState } from 'react';
+import emailjs from '@emailjs/browser';
 import Image from 'next/image';
 import styles from './ContactForm.module.css';
 
 export default function ContactForm() {
   const [isSubmitted, setIsSubmitted] = useState(false);
-
-  const handleSubmit = (e: React.FormEvent) => {
+  const [loading, setLoading] = useState(false);
+  const [errorMsg, setErrorMsg] = useState('');
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setIsSubmitted(true);
+    setErrorMsg('');
+    setLoading(true);
+    const formData = {
+      name: (document.getElementById('name') as HTMLInputElement).value,
+      email: (document.getElementById('email') as HTMLInputElement).value,
+      phone: (document.getElementById('phone') as HTMLInputElement).value,
+      service: (document.getElementById('service') as HTMLSelectElement).value,
+      date: (document.getElementById('date') as HTMLInputElement).value,
+      message: (document.getElementById('message') as HTMLTextAreaElement).value,
+    };
+    try {
+      await emailjs.send(
+        process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID as string,
+        process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID as string,
+        formData,
+        process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY as string
+      );
+      setIsSubmitted(true);
+    } catch (err) {
+      console.error(err);
+      setErrorMsg('Failed to send appointment request. Please try again later.');
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -81,8 +106,9 @@ export default function ContactForm() {
                     <textarea id="message" rows={4} placeholder="How can we help you?"></textarea>
                   </div>
                   
-                  <button type="submit" className={styles.submitButton}>
-                    Book Appointment
+                  {errorMsg && <p className={styles.error}>{errorMsg}</p>}
+                  <button type="submit" className={styles.submitButton} disabled={loading}>
+                    {loading ? (<><span className={styles.spinner} /> Booking Appointment...</>) : 'Book Appointment'}
                   </button>
                 </form>
               </>
