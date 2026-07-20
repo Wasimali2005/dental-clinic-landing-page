@@ -54,11 +54,11 @@ export default function WhyChooseUs() {
   return (
     <section className={styles.whyChooseUs}>
       <div className={styles.container}>
-        <div className={styles.imageColumn}>
+        {/* <div className={styles.imageColumn}>
           <div className={styles.imagePlaceholder}>
-            {/* <Image src="/images/smile-braces.jpg" alt="Patient with beautiful smile" fill className={styles.image} /> */}
+            <Image src="/images/smile-braces.jpg" alt="Patient with beautiful smile" fill className={styles.image} />
           </div>
-        </div>
+        </div> */}
         <div className={styles.contentColumn}>
           <span className={styles.eyebrow}>WHY CHOOSE US</span>
           <h2 className={styles.heading}>A great smile is worth protecting</h2>

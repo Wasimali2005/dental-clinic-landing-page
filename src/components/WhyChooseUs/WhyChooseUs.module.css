@@ -51,6 +51,7 @@
   font-weight: 700;
   line-height: 1.2;
   margin-bottom: 1.5rem;
+  width: 120%;
 }
 
 .desc {
@@ -72,6 +73,7 @@
   border: 1px solid transparent;
   transition: all 0.3s ease;
   box-shadow: 0 2px 8px rgba(0,0,0,0.02);
+  width: 600px;
 }
 
 .featureCard:hover {
@@ -112,10 +114,28 @@
   .contentColumn {
     order: 1;
   }
+  
+  .featuresGrid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .featureCard {
+    width: 100%;
+  }
+
 }
 
 @media (max-width: 640px) {
   .featuresGrid {
     grid-template-columns: 1fr;
   }
+
+  .contentColumn {
+    flex-direction: column;
+  }
+
+  .heading {
+    width: 100%;
+  } 
+  
 }

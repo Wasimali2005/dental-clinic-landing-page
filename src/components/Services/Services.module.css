@@ -8,6 +8,8 @@
 .cardsGrid {
   display: flex;
   justify-content: center;
+  flex-wrap: wrap;
+  gap: 2rem;
   max-width: 1200px;
   width: 100%;
 }
@@ -19,7 +21,7 @@
   padding: 2.5rem 2rem;
   width: 100%;
   max-width: 350px;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.02);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.02);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   display: flex;
   flex-direction: column;
@@ -66,4 +68,120 @@
 
 .arrow {
   transition: transform 0.3s ease;
+}
+
+/* ========================= */
+/* Large Desktop */
+/* ========================= */
+@media (min-width: 1440px) {
+  .cardsGrid {
+    gap: 2.5rem;
+  }
+
+  .card {
+    max-width: 360px;
+  }
+}
+
+/* ========================= */
+/* Laptop */
+/* ========================= */
+@media (max-width: 1024px) {
+  .services {
+    padding: 4rem 4%;
+  }
+
+  .cardsGrid {
+    gap: 1.8rem;
+  }
+
+  .card {
+    max-width: 320px;
+    padding: 2rem 1.75rem;
+  }
+}
+
+/* ========================= */
+/* Tablet */
+/* ========================= */
+@media (max-width: 768px) {
+  .services {
+    padding: 4rem 1.5rem;
+  }
+
+  .cardsGrid {
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+  }
+
+  .card {
+    max-width: 100%;
+  }
+
+  .cardTitle {
+    font-size: 1.35rem;
+  }
+
+  .cardDesc {
+    font-size: 0.95rem;
+  }
+}
+
+/* ========================= */
+/* Mobile */
+/* ========================= */
+@media (max-width: 480px) {
+  .services {
+    padding: 3rem 1rem;
+  }
+
+  .card {
+    padding: 1.75rem 1.25rem;
+    display: grid;
+    
+  }
+
+  .cardIcon svg {
+    width: 40px;
+    height: 40px;
+  }
+
+  .cardTitle {
+    font-size: 1.2rem;
+  }
+
+  .cardDesc {
+    font-size: 0.9rem;
+    line-height: 1.5;
+  }
+
+  .cardLink {
+    font-size: 0.95rem;
+  }
+}
+
+/* ========================= */
+/* Small Mobile */
+/* ========================= */
+@media (max-width: 360px) {
+  .services {
+    padding: 2.5rem 0.75rem;
+  }
+
+  .card {
+    padding: 1.5rem 1rem;
+  }
+
+  .cardTitle {
+    font-size: 1.1rem;
+  }
+
+  .cardDesc {
+    font-size: 0.85rem;
+  }
+
+  .cardLink {
+    font-size: 0.9rem;
+  }
 }

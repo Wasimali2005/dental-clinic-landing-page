@@ -1,6 +1,6 @@
 'use client';
 import { useState } from 'react';
-// import Image from 'next/image';
+import Image from 'next/image';
 import styles from './ContactForm.module.css';
 
 export default function ContactForm() {
@@ -16,7 +16,7 @@ export default function ContactForm() {
       <div className={styles.container}>
         <div className={styles.imageColumn}>
           <div className={styles.imagePlaceholder}>
-            {/* <Image src="/images/contact-dentist.jpg" alt="Dentist at work" fill className={styles.image} /> */}
+            { <Image src="/images/contact-bg.png" alt="Dentist at work" fill className={styles.image} /> }
           </div>
         </div>
         

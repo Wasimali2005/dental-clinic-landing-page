@@ -134,7 +134,72 @@
     gap: 3rem;
   }
 
+
+
   .imageColumn {
     height: 400px;
   }
+
+
 }
+
+@media (max-width: 640px) {
+
+  .container {
+    grid-template-columns: 1fr;
+  }
+
+  .imageColumn {
+    width: 50%;
+    height: 400px;
+  } 
+
+  .heading {
+    font-size: 1.2rem;
+  } 
+
+  .desc {
+    font-size: 1rem;
+  }
+
+  .button {
+    font-size: 1rem;
+  }
+
+  .stars {
+    gap: 0.125rem;
+  }
+
+  .quote {
+    font-size: 0.875rem;
+  }
+
+  .avatarPlaceholder {
+    width: 32px;
+    height: 32px;
+    font-size: 1rem;
+  }
+
+  .name {
+    font-size: 1rem;
+  }
+
+  .role {
+    font-size: 0.75rem;
+  }
+
+  .cardsContainer {
+    grid-template-columns: 1fr;
+  }
+
+  .card {
+    min-width: 280px;
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: var(--shadow-card);
+  }
+  
+
+
+  
+} 

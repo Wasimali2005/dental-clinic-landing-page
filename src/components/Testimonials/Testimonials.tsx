@@ -1,4 +1,4 @@
-// import Image from 'next/image';
+import Image from 'next/image';
 import styles from './Testimonials.module.css';
 
 export default function Testimonials() {
@@ -39,7 +39,7 @@ export default function Testimonials() {
       <div className={styles.container}>
         <div className={styles.imageColumn}>
           <div className={styles.imagePlaceholder}>
-            {/* <Image src="/images/testimonial-patient.jpg" alt="Happy patient" fill className={styles.image} /> */}
+            <Image src="/images/smile.jpg" alt="Happy patient" fill className={styles.image} />
           </div>
         </div>
         <div className={styles.contentColumn}>

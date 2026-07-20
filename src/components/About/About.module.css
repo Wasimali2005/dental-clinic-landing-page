@@ -5,6 +5,7 @@
 
 .block {
   display: grid;
+  /* width: 100%; */
   grid-template-columns: 1fr 1fr;
   gap: 4rem;
   padding: 6rem 10%;

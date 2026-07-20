@@ -21,6 +21,7 @@ body {
   color: var(--color-text-dark);
   background-color: var(--color-white);
   line-height: 1.6;
+  overflow-x: hidden;
   /* Font family is handled by next/font in layout.tsx */
 }
 
