@@ -4,6 +4,8 @@ import emailjs from '@emailjs/browser';
 import Image from 'next/image';
 import styles from './ContactForm.module.css';
 
+const EMAILJS_PUBLIC_KEY = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY || 'PllvjNCVWWytwBvlw';
+
 export default function ContactForm() {
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -25,7 +27,7 @@ export default function ContactForm() {
         process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID as string,
         process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID as string,
         formData,
-        process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY as string
+        EMAILJS_PUBLIC_KEY
       );
       setIsSubmitted(true);
     } catch (err) {
