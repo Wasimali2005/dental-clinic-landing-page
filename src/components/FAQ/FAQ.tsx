@@ -15,7 +15,20 @@ const faqs = [
   {
     id: 2,
     question: 'How do I book an appointment?',
-    answer: 'You can easily book an appointment by calling us directly at (555) 123-4567, or by filling out the online contact form on this website. Our team will get back to you promptly to confirm your time.'
+    answer: (
+      <>
+        You can easily book an appointment by contacting us directly at{' '}
+        <a 
+          href="https://wa.me/923374005515" 
+          target="_blank" 
+          rel="noopener noreferrer"
+          style={{ color: 'inherit', textDecoration: 'underline' }}
+        >
+          +92 337 4005515
+        </a>
+        , or by filling out the online contact form on this website. Our team will get back to you promptly to confirm your time.
+      </>
+    )
   },
   {
     id: 3,

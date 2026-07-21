@@ -97,7 +97,7 @@ export default function ContactForm() {
                     </div>
                     <div className={styles.formGroup}>
                       <label htmlFor="phone">Phone</label>
-                      <input type="tel" id="phone" required placeholder="(555) 123-4567" />
+                      <input type="tel" id="phone" required placeholder="+92 344 1234567" />
                     </div>
                   </div>
                   
