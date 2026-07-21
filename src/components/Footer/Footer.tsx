@@ -64,8 +64,9 @@ export default function Footer() {
               rel="noopener noreferrer"
               className={styles.contactLink}
             >
-              <p>123 Dental Street, Suite 100</p>
-              <p>New York, NY 10001</p>
+              <p>Office No. 322 (A), Block D,</p>
+              <p>3rd Floor, Sami Tower,</p>
+              <p>Ring Road, Peshawar, Pakistan</p>
             </a>
             <p className={styles.highlight}>
               <a 
