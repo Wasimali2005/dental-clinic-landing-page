@@ -81,7 +81,8 @@
   background-color: var(--color-accent);
   color: var(--color-white);
   transform: scale(1.03);
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 8px 30px rgba(26, 189, 224, 0.3);
+  border-color: var(--color-accent);
 }
 
 .button::before {

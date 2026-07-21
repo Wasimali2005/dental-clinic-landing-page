@@ -64,7 +64,7 @@
 .primaryButton:hover,
 .secondaryButton:hover {
   transform: scale(1.03);
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 8px 30px rgba(26, 189, 224, 0.3);
 }
 
 .primaryButton::before,
@@ -104,10 +104,12 @@
 .primaryButton {
   background-color: var(--color-accent);
   color: var(--color-white);
+  border: 1px solid var(--color-accent);
 }
 
 .primaryButton:hover {
   background-color: #169db8;
+  border-color: #169db8;
 }
 
 .secondaryButton {
@@ -119,6 +121,7 @@
 .secondaryButton:hover {
   background-color: var(--color-accent);
   color: var(--color-white);
+  border-color: var(--color-accent);
 }
 
 .heroRight {
