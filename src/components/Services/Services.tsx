@@ -21,10 +21,7 @@ export default function Services() {
             Learn More <span className={styles.arrow}>→</span>
           </Link>
         </div>
-      </div>
 
-
-      <div className={styles.cardsGrid}>
         <div className={styles.card}>
           <div className={styles.cardIcon}>
             <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
@@ -41,11 +38,7 @@ export default function Services() {
             Learn More <span className={styles.arrow}>→</span>
           </Link>
         </div>
-      </div>
 
-
-
-      <div className={styles.cardsGrid}>
         <div className={styles.card}>
           <div className={styles.cardIcon}>
             <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
@@ -63,9 +56,6 @@ export default function Services() {
           </Link>
         </div>
       </div>
-
-
-
     </section>
   );
 }
