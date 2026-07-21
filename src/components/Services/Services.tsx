@@ -1,11 +1,44 @@
+'use client';
 import Link from 'next/link';
+import { motion } from 'framer-motion';
+import { useInView } from 'framer-motion';
+import { useRef } from 'react';
 import styles from './Services.module.css';
 
 export default function Services() {
+  const ref = useRef<HTMLElement>(null);
+  const isInView = useInView(ref, { once: true, amount: 0.2 });
+
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.2
+      }
+    }
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 50 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.6
+      }
+    }
+  };
+
   return (
-    <section className={styles.services} id="services">
-      <div className={styles.cardsGrid}>
-        <div className={styles.card}>
+    <section className={styles.services} id="services" ref={ref}>
+      <motion.div 
+        className={styles.cardsGrid}
+        initial="hidden"
+        animate={isInView ? "visible" : "hidden"}
+        variants={containerVariants}
+      >
+        <motion.div className={styles.card} variants={itemVariants}>
           <div className={styles.cardIcon}>
             <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
               <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
@@ -20,9 +53,9 @@ export default function Services() {
           <Link href="#about" className={styles.cardLink}>
             Learn More <span className={styles.arrow}>→</span>
           </Link>
-        </div>
+        </motion.div>
 
-        <div className={styles.card}>
+        <motion.div className={styles.card} variants={itemVariants}>
           <div className={styles.cardIcon}>
             <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
               <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
@@ -37,9 +70,9 @@ export default function Services() {
           <Link href="#about" className={styles.cardLink}>
             Learn More <span className={styles.arrow}>→</span>
           </Link>
-        </div>
+        </motion.div>
 
-        <div className={styles.card}>
+        <motion.div className={styles.card} variants={itemVariants}>
           <div className={styles.cardIcon}>
             <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
               <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
@@ -54,8 +87,8 @@ export default function Services() {
           <Link href="#about" className={styles.cardLink}>
             Learn More <span className={styles.arrow}>→</span>
           </Link>
-        </div>
-      </div>
+        </motion.div>
+      </motion.div>
     </section>
   );
 }

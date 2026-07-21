@@ -1,6 +1,9 @@
 'use client';
 import { useState } from 'react';
 import Link from 'next/link';
+import { motion } from 'framer-motion';
+import { useInView } from 'framer-motion';
+import { useRef } from 'react';
 import styles from './FAQ.module.css';
 
 const faqs = [
@@ -33,15 +36,22 @@ const faqs = [
 
 export default function FAQ() {
   const [openId, setOpenId] = useState<number | null>(1); // Open first by default
+  const ref = useRef<HTMLElement>(null);
+  const isInView = useInView(ref, { once: true, amount: 0.2 });
 
   const toggleAccordion = (id: number) => {
     setOpenId(openId === id ? null : id);
   };
 
   return (
-    <section className={styles.faq} id="faq">
+    <section className={styles.faq} id="faq" ref={ref}>
       <div className={styles.container}>
-        <div className={styles.leftColumn}>
+        <motion.div 
+          className={styles.leftColumn}
+          initial={{ opacity: 0, x: -50 }}
+          animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -50 }}
+          transition={{ duration: 0.6 }}
+        >
           <span className={styles.eyebrow}>FAQ</span>
           <h2 className={styles.heading}>Most asked questions</h2>
           <p className={styles.desc}>
@@ -50,14 +60,22 @@ export default function FAQ() {
           <Link href="#contact" className={styles.button}>
             Contact Us
           </Link>
-        </div>
+        </motion.div>
         
-        <div className={styles.rightColumn}>
+        <motion.div 
+          className={styles.rightColumn}
+          initial={{ opacity: 0, x: 50 }}
+          animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 50 }}
+          transition={{ duration: 0.6, delay: 0.2 }}
+        >
           <div className={styles.accordion}>
-            {faqs.map((faq) => (
-              <div 
+            {faqs.map((faq, index) => (
+              <motion.div 
                 key={faq.id} 
                 className={`${styles.accordionItem} ${openId === faq.id ? styles.open : ''}`}
+                initial={{ opacity: 0, y: 20 }}
+                animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+                transition={{ duration: 0.4, delay: 0.3 + index * 0.1 }}
               >
                 <button 
                   className={styles.accordionHeader} 
@@ -75,10 +93,10 @@ export default function FAQ() {
                     {faq.answer}
                   </div>
                 </div>
-              </div>
+              </motion.div>
             ))}
           </div>
-        </div>
+        </motion.div>
       </div>
     </section>
   );

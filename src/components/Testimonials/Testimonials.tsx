@@ -1,7 +1,14 @@
+'use client';
 import Image from 'next/image';
+import { motion } from 'framer-motion';
+import { useInView } from 'framer-motion';
+import { useRef } from 'react';
 import styles from './Testimonials.module.css';
 
 export default function Testimonials() {
+  const ref = useRef<HTMLElement>(null);
+  const isInView = useInView(ref, { once: true, amount: 0.2 });
+
   const testimonials = [
     {
       id: 1,
@@ -35,20 +42,36 @@ export default function Testimonials() {
   };
 
   return (
-    <section className={styles.testimonials}>
+    <section className={styles.testimonials} ref={ref}>
       <div className={styles.container}>
-        <div className={styles.imageColumn}>
+        <motion.div 
+          className={styles.imageColumn}
+          initial={{ opacity: 0, x: -50 }}
+          animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -50 }}
+          transition={{ duration: 0.6 }}
+        >
           <div className={styles.imagePlaceholder}>
             <Image src="/images/smile.jpg" alt="Happy patient" fill className={styles.image} />
           </div>
-        </div>
-        <div className={styles.contentColumn}>
+        </motion.div>
+        <motion.div 
+          className={styles.contentColumn}
+          initial={{ opacity: 0, x: 50 }}
+          animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 50 }}
+          transition={{ duration: 0.6, delay: 0.2 }}
+        >
           <span className={styles.eyebrow}>TESTIMONIALS</span>
           <h2 className={styles.heading}>Join hundreds of satisfied patients</h2>
           
           <div className={styles.cardsContainer}>
-            {testimonials.map((testimonial) => (
-              <div key={testimonial.id} className={styles.card}>
+            {testimonials.map((testimonial, index) => (
+              <motion.div 
+                key={testimonial.id} 
+                className={styles.card}
+                initial={{ opacity: 0, y: 30 }}
+                animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+                transition={{ duration: 0.5, delay: 0.3 + index * 0.1 }}
+              >
                 <div className={styles.cardHeader}>
                   <div className={styles.avatarPlaceholder}>
                     {testimonial.name.charAt(0)}
@@ -62,10 +85,10 @@ export default function Testimonials() {
                   {renderStars(testimonial.rating)}
                 </div>
                 <p className={styles.quote}>"{testimonial.text}"</p>
-              </div>
+              </motion.div>
             ))}
           </div>
-        </div>
+        </motion.div>
       </div>
     </section>
   );

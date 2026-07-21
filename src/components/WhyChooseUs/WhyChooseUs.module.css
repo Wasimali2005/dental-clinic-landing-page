@@ -78,13 +78,28 @@
 
 .featureCard:hover {
   border-color: var(--color-accent);
-  transform: translateY(-4px);
+  transform: translateY(-4px) scale(1.02);
   box-shadow: var(--shadow-card);
 }
 
 .iconWrapper {
   color: var(--color-accent);
   margin-bottom: 1rem;
+  transition: transform 0.3s ease;
+}
+
+.featureCard:hover .iconWrapper {
+  transform: scale(1.15) rotate(-5deg);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .featureCard:hover {
+    transform: translateY(-4px);
+  }
+  
+  .featureCard:hover .iconWrapper {
+    transform: none;
+  }
 }
 
 .featureTitle {

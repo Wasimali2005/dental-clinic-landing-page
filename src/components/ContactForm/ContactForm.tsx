@@ -2,6 +2,9 @@
 import { useState } from 'react';
 import emailjs from '@emailjs/browser';
 import Image from 'next/image';
+import { motion } from 'framer-motion';
+import { useInView } from 'framer-motion';
+import { useRef } from 'react';
 import styles from './ContactForm.module.css';
 
 
@@ -9,6 +12,9 @@ export default function ContactForm() {
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
   const [errorMsg, setErrorMsg] = useState('');
+  const ref = useRef<HTMLElement>(null);
+  const isInView = useInView(ref, { once: true, amount: 0.2 });
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setErrorMsg('');
@@ -38,15 +44,25 @@ export default function ContactForm() {
   };
 
   return (
-    <section className={styles.contact} id="contact">
+    <section className={styles.contact} id="contact" ref={ref}>
       <div className={styles.container}>
-        <div className={styles.imageColumn}>
+        <motion.div 
+          className={styles.imageColumn}
+          initial={{ opacity: 0, x: -50 }}
+          animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -50 }}
+          transition={{ duration: 0.6 }}
+        >
           <div className={styles.imagePlaceholder}>
             { <Image src="/images/contact-bg.png" alt="Dentist at work" fill className={styles.image} /> }
           </div>
-        </div>
+        </motion.div>
         
-        <div className={styles.formColumn}>
+        <motion.div 
+          className={styles.formColumn}
+          initial={{ opacity: 0, x: 50 }}
+          animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 50 }}
+          transition={{ duration: 0.6, delay: 0.2 }}
+        >
           <div className={styles.formCard}>
             {isSubmitted ? (
               <div className={styles.successMessage}>
@@ -115,7 +131,7 @@ export default function ContactForm() {
               </>
             )}
           </div>
-        </div>
+        </motion.div>
       </div>
     </section>
   );

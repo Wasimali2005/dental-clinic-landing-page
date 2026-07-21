@@ -1,7 +1,14 @@
+'use client';
 // import Image from 'next/image';
+import { motion } from 'framer-motion';
+import { useInView } from 'framer-motion';
+import { useRef } from 'react';
 import styles from './WhyChooseUs.module.css';
 
 export default function WhyChooseUs() {
+  const ref = useRef<HTMLElement>(null);
+  const isInView = useInView(ref, { once: true, amount: 0.2 });
+
   const features = [
     {
       id: 1,
@@ -52,29 +59,40 @@ export default function WhyChooseUs() {
   ];
 
   return (
-    <section className={styles.whyChooseUs}>
+    <section className={styles.whyChooseUs} ref={ref}>
       <div className={styles.container}>
         {/* <div className={styles.imageColumn}>
           <div className={styles.imagePlaceholder}>
             <Image src="/images/smile-braces.jpg" alt="Patient with beautiful smile" fill className={styles.image} />
           </div>
         </div> */}
-        <div className={styles.contentColumn}>
+        <motion.div 
+          className={styles.contentColumn}
+          initial={{ opacity: 0, y: 30 }}
+          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+          transition={{ duration: 0.6 }}
+        >
           <span className={styles.eyebrow}>WHY CHOOSE US</span>
           <h2 className={styles.heading}>A great smile is worth protecting</h2>
           <p className={styles.desc}>
             Discover the many reasons why thousands of patients trust us with their dental health and ongoing care.
           </p>
           <div className={styles.featuresGrid}>
-            {features.map((feature) => (
-              <div key={feature.id} className={styles.featureCard}>
+            {features.map((feature, index) => (
+              <motion.div 
+                key={feature.id} 
+                className={styles.featureCard}
+                initial={{ opacity: 0, y: 30 }}
+                animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+              >
                 <div className={styles.iconWrapper}>{feature.icon}</div>
                 <h3 className={styles.featureTitle}>{feature.title}</h3>
                 <p className={styles.featureDesc}>{feature.desc}</p>
-              </div>
+              </motion.div>
             ))}
           </div>
-        </div>
+        </motion.div>
       </div>
     </section>
   );

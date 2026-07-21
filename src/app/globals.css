@@ -40,3 +40,46 @@ button {
   border: none;
   font-family: inherit;
 }
+
+/* Premium Button Hover Effect */
+.premiumButton {
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.premiumButton::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.2),
+    transparent
+  );
+  transition: left 0.5s ease;
+}
+
+.premiumButton:hover {
+  transform: scale(1.03);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+.premiumButton:hover::before {
+  left: 100%;
+}
+
+/* Respect prefers-reduced-motion */
+@media (prefers-reduced-motion: reduce) {
+  .premiumButton:hover {
+    transform: none;
+  }
+  
+  .premiumButton::before {
+    display: none;
+  }
+}

@@ -41,7 +41,7 @@
   bottom: -4px;
   left: 0;
   background-color: var(--color-accent);
-  transition: width 0.3s ease;
+  transition: width 0.4s cubic-bezier(0.25, 0.1, 0.25, 1);
 }
 
 .navLinks a:hover::after {
@@ -73,11 +73,45 @@
   border-radius: 4px;
   font-weight: 600;
   transition: background-color 0.3s ease;
+  position: relative;
+  overflow: hidden;
 }
 
 .ctaButton:hover {
   background-color: #169db8;
   color: var(--color-white);
+  transform: scale(1.03);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+.ctaButton::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.2),
+    transparent
+  );
+  transition: left 0.5s ease;
+}
+
+.ctaButton:hover::before {
+  left: 100%;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ctaButton:hover {
+    transform: none;
+  }
+  
+  .ctaButton::before {
+    display: none;
+  }
 }
 
 .hamburger {

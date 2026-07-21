@@ -1,5 +1,7 @@
 'use client';
 import { useEffect, useRef, useState } from 'react';
+import { motion } from 'framer-motion';
+import { useInView } from 'framer-motion';
 import styles from './StatsBar.module.css';
 
 const statsData = [
@@ -12,59 +14,51 @@ const statsData = [
 export default function StatsBar() {
   const [hasAnimated, setHasAnimated] = useState(false);
   const sectionRef = useRef<HTMLElement>(null);
+  const isInView = useInView(sectionRef, { once: true, amount: 0.5 });
   const [counts, setCounts] = useState(statsData.map(() => 0));
 
   useEffect(() => {
-    const currentRef = sectionRef.current;
-    
-    const observer = new IntersectionObserver(
-      (entries) => {
-        if (entries[0].isIntersecting && !hasAnimated) {
-          setHasAnimated(true);
-          // Animate counters
-          statsData.forEach((stat, index) => {
-            const duration = 2000; // 2 seconds
-            const steps = 60;
-            const stepTime = duration / steps;
-            const increment = stat.value / steps;
-            
-            let current = 0;
-            const timer = setInterval(() => {
-              current += increment;
-              if (current >= stat.value) {
-                clearInterval(timer);
-                current = stat.value;
-              }
-              setCounts((prev) => {
-                const newCounts = [...prev];
-                newCounts[index] = Math.floor(current);
-                return newCounts;
-              });
-            }, stepTime);
+    if (isInView && !hasAnimated) {
+      setHasAnimated(true);
+      // Animate counters
+      statsData.forEach((stat, index) => {
+        const duration = 2000; // 2 seconds
+        const steps = 60;
+        const stepTime = duration / steps;
+        const increment = stat.value / steps;
+        
+        let current = 0;
+        const timer = setInterval(() => {
+          current += increment;
+          if (current >= stat.value) {
+            clearInterval(timer);
+            current = stat.value;
+          }
+          setCounts((prev) => {
+            const newCounts = [...prev];
+            newCounts[index] = Math.floor(current);
+            return newCounts;
           });
-        }
-      },
-      { threshold: 0.5 }
-    );
-
-    if (currentRef) {
-      observer.observe(currentRef);
+        }, stepTime);
+      });
     }
-
-    return () => {
-      if (currentRef) observer.unobserve(currentRef);
-    };
-  }, [hasAnimated]);
+  }, [isInView, hasAnimated]);
 
   return (
     <section className={styles.statsBar} ref={sectionRef}>
       {statsData.map((stat, index) => (
-        <div key={index} className={styles.statItem}>
+        <motion.div 
+          key={index} 
+          className={styles.statItem}
+          initial={{ opacity: 0, y: 30 }}
+          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+          transition={{ duration: 0.5, delay: index * 0.1 }}
+        >
           <div className={styles.number}>
             {counts[index]}{stat.suffix}
           </div>
           <div className={styles.label}>{stat.label}</div>
-        </div>
+        </motion.div>
       ))}
     </section>
   );
