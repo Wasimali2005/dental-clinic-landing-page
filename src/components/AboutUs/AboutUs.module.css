@@ -1,0 +1,258 @@
+.aboutUs {
+  background-color: var(--color-white);
+  padding: 6rem 10%;
+  width: 100%;
+}
+
+.container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: center;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.imageSection {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.imageGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+}
+
+.imageCard {
+  position: relative;
+  height: 280px;
+  border-radius: var(--radius-card);
+  overflow: hidden;
+  box-shadow: var(--shadow-card);
+}
+
+.imageWrapper {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background-color: #e2e8f0;
+  overflow: hidden;
+}
+
+.image {
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.imageCard:hover .image {
+  transform: scale(1.05);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .imageCard:hover .image {
+    transform: none;
+  }
+}
+
+.contentSection {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.eyebrow {
+  color: var(--color-accent);
+  font-size: 0.875rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-bottom: 1rem;
+}
+
+.title {
+  color: var(--color-primary);
+  font-size: clamp(2rem, 3vw, 2.5rem);
+  font-weight: 700;
+  line-height: 1.2;
+  margin-bottom: 1.5rem;
+}
+
+.description {
+  color: var(--color-text-muted);
+  font-size: 1.125rem;
+  line-height: 1.7;
+  margin-bottom: 2rem;
+}
+
+.featuresList {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.featureItem {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.featureIcon {
+  color: var(--color-accent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  background-color: rgba(26, 189, 224, 0.1);
+  border-radius: 50%;
+  transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.featureItem:hover .featureIcon {
+  transform: scale(1.1);
+  background-color: rgba(26, 189, 224, 0.2);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .featureItem:hover .featureIcon {
+    transform: none;
+  }
+}
+
+.featureText {
+  color: var(--color-text-dark);
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+.ctaButton {
+  background-color: var(--color-accent);
+  color: var(--color-white);
+  padding: 0.875rem 2rem;
+  border-radius: 4px;
+  font-weight: 600;
+  border: 1px solid var(--color-accent);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  text-align: center;
+}
+
+.ctaButton:hover {
+  background-color: #169db8;
+  border-color: #169db8;
+  transform: scale(1.03);
+  box-shadow: 0 8px 30px rgba(26, 189, 224, 0.3);
+}
+
+.ctaButton::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.2),
+    transparent
+  );
+  transition: left 0.5s ease;
+}
+
+.ctaButton:hover::before {
+  left: 100%;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ctaButton:hover {
+    transform: none;
+  }
+  
+  .ctaButton::before {
+    display: none;
+  }
+}
+
+/* Tablet */
+@media (max-width: 1024px) {
+  .aboutUs {
+    padding: 4rem 5%;
+  }
+
+  .container {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+
+  .imageGrid {
+    order: -1;
+  }
+
+  .imageCard {
+    height: 250px;
+  }
+
+  .contentSection {
+    align-items: flex-start;
+  }
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .aboutUs {
+    padding: 3rem 4%;
+  }
+
+  .container {
+    gap: 2.5rem;
+  }
+
+  .imageGrid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .imageCard {
+    height: 220px;
+  }
+
+  .title {
+    font-size: 1.75rem;
+  }
+
+  .description {
+    font-size: 1rem;
+  }
+
+  .featuresList {
+    gap: 0.875rem;
+  }
+
+  .ctaButton {
+    width: 100%;
+  }
+}
+
+/* Small Mobile */
+@media (max-width: 480px) {
+  .aboutUs {
+    padding: 2.5rem 1rem;
+  }
+
+  .imageCard {
+    height: 200px;
+  }
+
+  .title {
+    font-size: 1.5rem;
+  }
+
+  .description {
+    font-size: 0.95rem;
+  }
+}
