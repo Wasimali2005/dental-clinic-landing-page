@@ -24,8 +24,6 @@ const isValidDate = (date: string) => {
   return new Date(date) >= today;
 };
 
-// ─── Today's date string for min attribute ───────────────────────────────────
-const getTodayStr = () => new Date().toISOString().split('T')[0];
 
 // ─── Component ───────────────────────────────────────────────────────────────
 
@@ -34,6 +32,8 @@ export default function ContactForm() {
   const [loading, setLoading] = useState(false);
   const [validationError, setValidationError] = useState('');
   const [serverError, setServerError] = useState('');
+  // Compute today's date only on client to avoid SSR prerender error
+  const [todayStr] = useState(() => new Date().toISOString().split('T')[0]);
 
   // Controlled inputs
   const [name, setName] = useState('');
@@ -225,7 +225,7 @@ export default function ContactForm() {
                       <input
                         type="date"
                         id="date"
-                        min={getTodayStr()}
+                        min={todayStr}
                         value={date}
                         onChange={(e) => setDate(e.target.value)}
                         required
