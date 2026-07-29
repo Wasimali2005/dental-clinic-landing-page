@@ -56,23 +56,23 @@ export default function ContactForm() {
 
     // Strict validation — stop on first error
     if (!name.trim()) {
-      setValidationError('❌ Full Name khali nahi ho sakta.');
+      setValidationError('❌ Full Name is required.');
       return;
     }
     if (!isValidEmail(email)) {
-      setValidationError('❌ Email mein @gmail.com hona zaroori hai (e.g. name@gmail.com).');
+      setValidationError('❌ Email must be a valid @gmail.com address (e.g. name@gmail.com).');
       return;
     }
     if (!isValidPhone(phone)) {
-      setValidationError('❌ Phone number 11 digits ka hona chahiye (e.g. 03001234567) ya +92 ke saath (e.g. +923001234567).');
+      setValidationError('❌ Phone number must be 11 digits (e.g. 03001234567) or include country code (+923001234567).');
       return;
     }
     if (!service) {
-      setValidationError('❌ Koi service select karna zaroori hai.');
+      setValidationError('❌ Please select a service.');
       return;
     }
     if (!isValidDate(date)) {
-      setValidationError('❌ Preferred date aaj se pehle nahi ho sakti.');
+      setValidationError('❌ Preferred date cannot be in the past.');
       return;
     }
 
@@ -197,7 +197,7 @@ export default function ContactForm() {
                       <input
                         type="tel"
                         id="phone"
-                        placeholder="03001234567 or +923001234567"
+                        placeholder="+92 300 1234567"
                         value={phone}
                         onChange={(e) => setPhone(e.target.value)}
                         required
