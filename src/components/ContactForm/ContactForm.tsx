@@ -1,9 +1,8 @@
 'use client';
-import { useState } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import emailjs from '@emailjs/browser';
 import Image from 'next/image';
 import { motion, useInView } from 'framer-motion';
-import { useRef } from 'react';
 import styles from './ContactForm.module.css';
 
 // ─── Validation helpers ──────────────────────────────────────────────────────
@@ -32,8 +31,11 @@ export default function ContactForm() {
   const [loading, setLoading] = useState(false);
   const [validationError, setValidationError] = useState('');
   const [serverError, setServerError] = useState('');
-  // Compute today's date only on client to avoid SSR prerender error
-  const [todayStr] = useState(() => new Date().toISOString().split('T')[0]);
+  // todayStr set only on client after mount — avoids SSR prerender error
+  const [todayStr, setTodayStr] = useState('');
+  useEffect(() => {
+    setTodayStr(new Date().toISOString().split('T')[0]);
+  }, []);
 
   // Controlled inputs
   const [name, setName] = useState('');
